@@ -8,7 +8,7 @@ import { defineChain } from "thirdweb/chains";
 
 function Dashboard() {
   const [_name, setName] = React.useState<string>("");
-  const [_age, setAge] = React.useState<number>(0);
+  const [_age, setAge] = React.useState<number>();
   const account = useActiveAccount();
   const [isSubmitting, setIsSubmitting] = React.useState<boolean>(false);
 

@@ -4,11 +4,19 @@ import viteLogo from "/vite.svg";
 import { createWallet, inAppWallet } from "thirdweb/wallets";
 import { sepolia } from "thirdweb/chains";
 
-function Navbar() {
+function Navbar({
+  currentPage,
+  setCurrentPage,
+  darkMode,
+}: {
+  currentPage: string;
+  setCurrentPage: (page: string) => void;
+  darkMode: boolean;
+}) {
   const wallets = [
     inAppWallet({
       // available auth methods
-      auth: { options: ["discord", "passkey", "google", "github", "guest"] },
+      auth: { options: ["discord", "passkey", "google", "github", "facebook"] },
       // app metadata
       metadata: {
         name: "Test App",
@@ -38,16 +46,34 @@ function Navbar() {
       style={{ backdropFilter: "blur(8px)" }}
     >
       <img src={viteLogo} alt="Logo" className="h-8 w-8" />
-      <div className="space-x-4">
-        <a href="/" className="hover:underline">
-          Home
-        </a>
-        <a href="/about" className="hover:underline">
-          About
-        </a>
-        <a href="/contact" className="hover:underline">
-          Contact
-        </a>
+      <div className="hidden md:flex items-center space-x-8">
+        {[
+          { name: "Home", page: "home" },
+          { name: "Test", page: "test" },
+        ].map((item) => (
+          <button
+            key={item.name}
+            onClick={() => setCurrentPage && setCurrentPage(item.page)}
+            className={`relative transition-all duration-300 group font-medium py-2
+                  ${
+                    currentPage === item.page
+                      ? "text-[#20ff96] font-semibold"
+                      : "text-gray-300 hover:text-[#20ff96] font-normal"
+                  }
+                `}
+          >
+            {item.name}
+            <span
+              className={`absolute -bottom-0.5 left-0 h-0.5 transition-all duration-300
+                    ${
+                      currentPage === item.page
+                        ? "bg-gradient-to-r from-[#20ff96] to-[#00cc75] w-full"
+                        : "bg-gradient-to-r from-[#20ff96] to-[#00cc75] w-0 group-hover:w-full"
+                    }
+                  `}
+            ></span>
+          </button>
+        ))}
       </div>
       <div>
         <ConnectButton
