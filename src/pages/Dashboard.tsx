@@ -6,7 +6,7 @@ import { Loader2, UserPlus, Wallet } from "lucide-react";
 import { client } from "../client";
 import { defineChain } from "thirdweb/chains";
 
-function Dashboard() {
+function Dashboard({ onSuccess }: { onSuccess?: () => void }) {
   const [_name, setName] = React.useState<string>("");
   const [_age, setAge] = React.useState<number>();
   const account = useActiveAccount();
@@ -47,6 +47,7 @@ function Dashboard() {
       setName("");
       setAge(0);
       toast.success("Person created successfully! Transaction pending...");
+      if (onSuccess) onSuccess();
     } catch (error) {
       console.error("Error executing contract function:", error);
       toast.error("Error creating person. Please try again.");
@@ -60,10 +61,10 @@ function Dashboard() {
 
   return (
     <div
-      className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-12 px-4 sm:px-6 lg:px-8"
+      className="flex items-center justify-center min-h-[60vh] bg-gradient-to-br from-blue-50 to-indigo-100 py-6 px-2 sm:px-4 lg:px-8"
       style={{ background: "rgba(0, 0, 0, 0.05)" }}
     >
-      <div className="max-w-md mx-auto">
+      <div className="w-full max-w-md mx-auto">
         <div className="text-center mb-8">
           <div className="flex justify-center mb-4">
             <div className="p-3 bg-blue-100 rounded-full">
@@ -87,12 +88,12 @@ function Dashboard() {
           </div>
         )}
 
-        <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-6">
+        <div className="bg-gray-800 bg-shadow-white rounded-xl shadow-lg text-gray-300 p-6">
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <label
                 htmlFor="name"
-                className="block text-sm font-medium text-gray-700 mb-2"
+                className="block text-sm font-medium text-gray-400 mb-2"
               >
                 Name *
               </label>
@@ -110,7 +111,7 @@ function Dashboard() {
             <div>
               <label
                 htmlFor="age"
-                className="block text-sm font-medium text-gray-700 mb-2"
+                className="block text-sm font-medium text-gray-400 mb-2"
               >
                 Age *
               </label>
@@ -135,7 +136,7 @@ function Dashboard() {
                 ${
                   isButtonDisabled
                     ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-                    : "bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:from-blue-700 hover:to-indigo-700 transform hover:scale-105"
+                    : "bg-gradient-to-r from-indigo-600 to-green-600 hover:cursor-pointer text-white hover:from-green-700 hover:to-indigo-700 transform hover:scale-105"
                 }
                 flex items-center justify-center space-x-2
               `}

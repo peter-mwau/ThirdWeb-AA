@@ -42,7 +42,7 @@ function Navbar({
   ];
   return (
     <div
-      className="flex flex-row justify-between items-center p-4 bg-gray-800 text-white fixed top-4 left-1/2 transform -translate-x-1/2 w-[95vw] max-w-4xl rounded-xl shadow-lg z-50"
+      className="flex flex-row justify-between items-center p-4 bg-gray-900/70 text-white fixed top-4 left-1/2 transform -translate-x-1/2 w-[95vw] max-w-4xl rounded-xl shadow-lg z-50"
       style={{ backdropFilter: "blur(8px)" }}
     >
       <img src={viteLogo} alt="Logo" className="h-8 w-8" />

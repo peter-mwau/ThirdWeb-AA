@@ -343,7 +343,7 @@ function Home() {
               </button>
             </div>
             <div className="p-6">
-              <Dashboard />
+              <Dashboard onSuccess={() => setShowDashboard(false)} />
             </div>
           </div>
         </div>

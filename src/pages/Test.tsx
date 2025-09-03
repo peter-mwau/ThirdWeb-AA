@@ -44,6 +44,32 @@ const courses = [
     level: "Advanced",
     image: "/public/mine2.jpeg",
   },
+  {
+    id: "C104",
+    name: "Blockchain Basics",
+    description:
+      "Understand the core concepts of blockchain technology, including decentralization, consensus mechanisms, and cryptography. Perfect for beginners.",
+    creator: "0x1234567890abcdef1234567890abcdef12345678",
+    price: 0.0009,
+    duration: "4 hours",
+    students: 3000,
+    rating: 4.5,
+    level: "Beginner",
+    image: "/public/mine3.jpeg",
+  },
+  {
+    id: "C105",
+    name: "Advanced Solidity Programming",
+    description:
+      "Deep dive into advanced Solidity topics such as gas optimization, security best practices, and design patterns. Ideal for experienced developers.",
+    creator: "0xfedcba9876543210fedcba9876543210fedcba98",
+    price: 0.0045,
+    duration: "20 hours",
+    students: 750,
+    rating: 4.9,
+    level: "Advanced",
+    image: "/public/mine2.jpeg",
+  },
 ];
 
 function Test() {
@@ -139,7 +165,7 @@ function Test() {
                     </p>
                   </div>
                   <button
-                    className="px-4 py-2 rounded-xl font-semibold text-white transition-all duration-300 flex items-center space-x-2 group-hover:scale-105"
+                    className="px-4 py-2 rounded-xl font-semibold text-white transition-all duration-300 flex items-center space-x-2 group-hover:scale-105 hover:cursor-pointer"
                     style={{
                       background: "linear-gradient(to right, #20d42b, #1f3c5f)",
                       boxShadow: "0 4px 14px 0 rgba(32, 212, 43, 0.25)",
